@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}sdr detail{% endblock %}
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>{{ sdr.name }}</h1>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8">
+        <p class="text-center"><span>{{ sdr.owner.username }}</span><span style="margin-left: 20px"></span></p>
+        <table border="1">
+                <tr>
+                        <td>ip</td>
+						<td>{{sdr.ip}}</td>
+                </tr>
+                <tr>
+                        <td>loc_x</td>
+						<td>{{sdr.loc_x}}</td>
+                </tr>
+                <tr>
+                        <td>loc_y</td>
+						<td>{{sdr.loc_y}}</td>
+                </tr>
+                <tr>
+                        <td>p_id</td>
+						<td>{{sdr.p_id}}</td>
+                </tr>
+        </table>
+    </div>
+    <div class="col-xs-6 col-md-4">
+        <h2>广告</h2>
+        <p>跟老齐学：www.itdiffer.com</p>
+        <img width="100px" height="100" src="http://www.mrwallpaper.com/wallpapers/Fluffy-Cat.jpg">
+    </div>
+</div>
+{% endblock %}

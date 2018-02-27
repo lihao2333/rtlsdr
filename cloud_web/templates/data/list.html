@@ -1,0 +1,25 @@
+{%extends "base.html"%}
+{%block title%} blog titles{%endblock%}
+{% block content%}
+{% load staticfiles %}
+<div class="row text-center vertial-middle-sm">
+        <h1>data list</h1>
+		{%if user.is_authenticated%}
+		<h6>hello, {{user.username}}</h6>
+		{%endif%}
+</div>
+<div class="row">
+        <div class="col-xs-12 col-md-8">
+                <ul>
+						{% for data in datas%}
+                    <li><a href="{{data.id}}">{{data.time}}</a></li>
+						{% endfor %}
+                </ul>
+        </div>
+        <div class="col-xs-6 col-md-4">
+				<h2>广告</h2>
+                <p>hoho</p>
+                <img src="{% static '/image/test.png' %}" alt="image" width="100" height="100">
+        </div>
+</div>
+{%endblock%}

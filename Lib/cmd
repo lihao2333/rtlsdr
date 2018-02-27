@@ -1,0 +1,6 @@
+load data local infile 'receiver.txt' into table MapModel_receiver fields terminated by ',' lines terminated by '\n';
+//install rtlsdr
+sudo pip install pyrtlsdr
+sduo apt-get install librtlsdr-dev
+ldconfig
+reboot

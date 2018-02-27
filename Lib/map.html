@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#allmap{width:100%;height:500px;}
+		p{margin-left:5px; font-size:14px;}
+	</style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3b9SXFGMg8akXEXPet2NEAmewSlQTjyc"></script>
+    <title>纯文本的信息窗口</title>
+</head>
+<body>
+<div id="allmap"></div>
+<!-- ---------------input_get-------------------------- -->
+<form action = "/map" method="get">
+    <label>x</label><input type="text" id = "x" name = "x">
+    <label>y</label><input type="text" id = "y" name = "y">
+    <label>fc</label><input type="text"  name = "fc"><label>MHz</label>
+    <label>fs</label><input type="text"  name = "fs"><label>MHz</label><br>
+    <label>T</label><input type="text"  name = "t"><label>s</label>
+    <label>AGC</label><input type="text"  name = "agc"><label>db</label>
+    <input type="submit" id = "submit" value = "submit">
+</form>
+
+<!-- ---------------output-------------------------- -->
+<p id = "output">{{output}}</p>
+{%load staticfiles%}
+<a href = '{%static "data/data.zip"%}'>Download IQ</a>
+<img src = '{%static "images/test.png"%}'/>
+
+
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+//------------------for loc in locs-------------------------------
+	{%for loc in locs%}
+	var point{{loc.id}} = new BMap.Point({{loc.x}},{{loc.y}});
+	var marker{{loc.id}} = new BMap.Marker(point{{loc.id}});  // 创建标注
+	map.addOverlay(marker{{loc.id}});              // 将标注添加到地图中
+	marker{{loc.id}}.addEventListener("click", function(){
+	document.getElementById("x").value={{loc.x}}
+	document.getElementById("y").value={{loc.y}}
+	});
+	{%endfor%}
+
+	map.centerAndZoom(point1, 12);
+</script>

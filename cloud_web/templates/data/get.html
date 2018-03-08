@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+{%block title%} data get{%endblock%}
+{% block content%}
+{% load staticfiles %}
+<div class="row text-center vertial-middle-sm">
+        <h1>data get</h1>
+		{%if user.is_authenticated%}
+		<h6>hello, {{user.username}}</h6>
+		{%endif%}
+</div>
+<div class="row">
+        <div class="col-xs-12 col-md-8">
+            <form action="{% url 'data_get'%}",method="GET">
+            <select name="sdr_ip">
+                {%for sdr in sdrs%}
+                <option   value ={{sdr.ip}}>{{sdr.name}}--{{sdr.ip}}--{{sdr.loc_x}},{{sdr.loc_y}}</option>
+                {%endfor%}
+            </select><br>
+                fc:<input type="text" name="fc" value="2e6"><br>
+                fs:<input type="text" name="fs" value="2.4e6"><br>
+                agc:<input type="text" name="agc" value="4"><br>
+                dt:<input type="text" name="dt" value="0.001"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="col-xs-6 col-md-4">
+				<h2>广告</h2>
+                <p>hoho</p>
+                <img src="{% static '/image/test.png' %}" alt="image" width="100" height="100">
+        </div>
+</div>
+{%endblock%}

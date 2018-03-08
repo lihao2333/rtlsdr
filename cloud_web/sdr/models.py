@@ -8,3 +8,5 @@ class Sdr(models.Model):
     loc_y = models.FloatField(max_length=10)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="owner")
     p_id = models.IntegerField(max_length=6)
+    def __str__(self):
+        return self.name

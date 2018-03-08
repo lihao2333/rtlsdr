@@ -6,8 +6,9 @@
                 </div>
                 <div>
                         <ul class="nav navbar-nav" role="navigation">
-								<li><a href="{%url 'sdr_list'%}">sdr_list</a></li>
+								<li><a href="{%url 'sdrpub_list'%}">sdr_list</a></li>
                                 <li><a href="{%url 'data_list'%}">data_list</a></li>
+                                <li><a href="{%url 'data_get'%}">data_get</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                                 {% if user.is_authenticated%}

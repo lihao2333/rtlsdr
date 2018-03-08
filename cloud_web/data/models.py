@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from sdr.models import Sdr
 # Create your models here.
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
@@ -12,9 +13,6 @@ class Data(models.Model):
     fs = models.FloatField()
     dt = models.FloatField()
     fc = models.FloatField()
-    agc = models.FloatField()
-    psd = models.ImageField(upload_to=user_directory_path)
+    gain = models.FloatField()
     data = models.FileField(upload_to=user_directory_path)
     time = models.DateTimeField(default=timezone.now())
-
-

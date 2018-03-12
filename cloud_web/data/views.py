@@ -9,6 +9,7 @@ from django.conf import settings
 from rtlsdr import RtlSdrTcpClient
 from .forms import DataUploadForm
 from sdrpub.models import Sdr
+import time as ttime
 # Create your views here.
 def data_list(request):
     datas = Data.objects.filter(owner=request.user)
@@ -57,6 +58,7 @@ def data_get(request):
         client.center_freq = float(fc)
         client.sample_rate = float(fs)
         client.gain = float(gain)
+        client.mytime = ttime.time()+3
         datas = client.read_samples(float(dt)*float(fs))
         time = timezone.now()
         data_path="user_{0}/{1}.txt".format(user.username, time)
